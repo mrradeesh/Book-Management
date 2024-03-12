@@ -1,12 +1,15 @@
 const express = require("express");
-// const { users } = require("./data/users.json");
 const userRoute = require("./routes/users");
 const bookRoute = require("./routes/books");
-//const kill = require("kill-port");
+const dotenv = require("dotenv");
+//if we invoke any method from controllers then we shoul invoke that perticular controller
+//const { getAllBooks } = require("./controllers/book-controller");
+const dbconnection = require("./databaseConnection");
+dbconnection();
+dotenv.config();
 
 const app = express();
 const PORT = 8080;
-//kill(8080, "tcp");
 app.use(express.json());
 
 app.get("/", (req, res) => {
